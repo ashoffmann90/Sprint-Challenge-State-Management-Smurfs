@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
-import {postSmurf} from '../actions/actions'
+import axios from 'axios'
+// import {postSmurf} from '../actions/actions'
 
 
 const Form = props => {
     const [newSmurf, setNewSmurf] = useState({
         name:'',
         age:'',
-        height:''
+        height:'',
+        id: Date.now()
     })
 
     const handleChange = e => {
@@ -20,6 +22,15 @@ const Form = props => {
 
     const submitForm = e => {
         e.preventDefault()
+        axios.post('http://localhost:3333/smurfs', newSmurf)
+        .then(response => {
+            console.log('new smurf', response)
+            // dispatch({type: "POST_SUCCESS"})
+        })
+        .catch(error => {
+            console.log('oops', error)
+            // dispatch({ type: "POST_FAIL", payload: error.response})
+        })
     }
 
     return(
@@ -49,7 +60,7 @@ const Form = props => {
                     value={newSmurf.height}
                 />
             </label><br/>
-            <button type='submit' onClick={() => props.postSmurf(newSmurf)}>Add Your Smurf!</button>
+            <button type='submit'>Add Your Smurf!</button>
         </form>
         </>
     )
@@ -63,4 +74,4 @@ const mapStateToProps = state => {
         error: state.error
     }
 }
-export default connect(mapStateToProps, {postSmurf})(Form)
+export default connect(mapStateToProps, {})(Form)

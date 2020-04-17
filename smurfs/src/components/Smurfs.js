@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
 import {getSmurfs} from '../actions/actions'
 
 const Smurfs = props => {
 
+    useEffect(() => {
+        props.getSmurfs()
+    }, [])
+
     return(
         <>
             <div>
-                <button onClick={() => props.getSmurfs()}>Show me the Smurfs!</button>
+                <h1>Here's your village!</h1>
             </div>
             {props.smurfs.map(smurf => (
                 <div key={smurf.id}>

@@ -24,25 +24,25 @@ const reducer = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             }
-        case "POST_SUCCESS":
-            const newSmurf = {
-              name: '',
-              age: '',
-              height: '',
-            };
-            return {
-              ...state,
-              smurfs: [...state.smurfs, newSmurf],
-              isFetching: false,
-              error: ""
-            };
-        case "POST_FAIL":
-          return {
-            ...state,
-            isAdding: false,
-            error: action.payload,
-            isFetching: false
-          };
+        // case "POST_SUCCESS":
+        //     const newSmurf = {
+        //       name: '',
+        //       age: '',
+        //       height: '',
+        //     };
+        //     return {
+        //       ...state,
+        //       smurfs: [...state.smurfs, newSmurf],
+        //       isFetching: false,
+        //       error: ""
+        //     };
+        // case "POST_FAIL":
+        //   return {
+        //     ...state,
+        //     isAdding: false,
+        //     error: action.payload,
+        //     isFetching: false
+        //   };
 
         default:
             return state

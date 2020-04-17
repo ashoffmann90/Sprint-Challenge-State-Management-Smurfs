@@ -13,13 +13,13 @@ export const getSmurfs = () => dispatch => {
     })
 }
 
-export const postSmurf = newSmurf => dispatch => {
-    axios.post('http://localhost:3333/smurfs', newSmurf)
-    .then(response => {
-        console.log('new smurf', response)
-        dispatch({type: "POST_SUCCESS", payload: response.data})
-    })
-    .catch(error => {
-        dispatch({ type: "POST_FAIL", payload: error.response})
-    })
-}
+// export const postSmurf = newSmurf => dispatch => {
+//     axios.post('http://localhost:3333/smurfs', newSmurf)
+//     .then(response => {
+//         console.log('new smurf', response)
+//         dispatch({type: "POST_SUCCESS"})
+//     })
+//     .catch(error => {
+//         dispatch({ type: "POST_FAIL", payload: error.response})
+//     })
+// }
